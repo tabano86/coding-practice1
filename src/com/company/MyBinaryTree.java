@@ -1,8 +1,11 @@
 package com.company;
 
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
+
 class MyBinaryTree {
     private Node root;
-
     MyBinaryTree() {}
 
     void insert(Integer value) {
@@ -31,6 +34,23 @@ class MyBinaryTree {
         }
     }
 
+    Integer depth() {
+        return depth(root);
+    }
+
+    private Integer depth(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftDepth = depth(node.left);
+        int rightDepth = depth(node.left);
+        if (leftDepth > rightDepth) {
+            return leftDepth + 1;
+        } else {
+            return rightDepth + 1;
+        }
+    }
+
     void printInOrder() {
         printInOrder(root);
     }
@@ -45,6 +65,28 @@ class MyBinaryTree {
         printInOrder(node.right);
     }
 
+    Node BFS(Integer srchValue) {
+        return BFS(root, srchValue);
+    }
+
+    private Node BFS(Node node, Integer srchValue) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+
+        while(!queue.isEmpty()) {
+            Node n = queue.remove();
+            if (srchValue.equals(Objects.requireNonNull(n).value)) {
+                return n;
+            }
+            if (n.left != null) {
+                queue.offer(n.left);
+            }
+            if (n.right != null) {
+                queue.offer(n.right);
+            }
+        }
+        return null;
+    }
 
     class Node {
         Node(Integer value) {

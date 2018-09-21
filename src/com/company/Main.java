@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +11,9 @@ public class Main {
         tree.insert(4);
         tree.insert(88);
         tree.insert(60);
-        tree.printInOrder();
+        System.out.println(tree.BFS(0) != null ? "YES" : "NO");
+        System.out.println("HEIGHT: " + tree.depth());
+        EvenParenthesis ep = new EvenParenthesis();
+        System.out.println("IS BALANCED: " + ep.isBalanced());
     }
 }
