@@ -3,7 +3,7 @@ package com.company;
 import java.util.Stack;
 
 class EvenParenthesis {
-    String str = "()()()";
+    String str = "(()())";
 
     EvenParenthesis() { }
 
